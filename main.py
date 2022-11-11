@@ -48,6 +48,17 @@ def validarUsuario():
         return {"mensaje":"Usuario y contraseña Erroneos"}, 401
 
 
+@app.route("/crear-candidato", methods=['POST'])
+def crearEstudiante():
+    url = dataConfig["url-backend-registraduria"] + "/candidato"
+    headers = {
+        "Content-Type": "application/json"
+    }
+    body = request.get_json()
+
+    response = requests.post(url, json=body, headers=headers)
+
+    return response.json()
 
 
 #@app.route("/",methods=['GET'])
